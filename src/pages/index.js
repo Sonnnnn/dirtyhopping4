@@ -13,42 +13,42 @@ import { Main } from '../components/Main'
 import { DarkModeSwitch } from '../components/DarkModeSwitch'
 import { CTA } from '../components/CTA'
 import { Footer } from '../components/Footer'
+import { Button, Select } from "@chakra-ui/react"
+import Map from '../components/Map'
+
+
 
 const Index = () => (
-  <Container height="100vh">
-    <Hero />
+  <Container>
+    <Hero title="DirtyHopping" />
     <Main>
-      <Text>
-        Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code>.
-      </Text>
 
-      <List spacing={3} my={0}>
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <ChakraLink
-            isExternal
-            href="https://chakra-ui.com"
-            flexGrow={1}
-            mr={2}
-          >
-            Chakra UI <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <ChakraLink isExternal href="https://nextjs.org" flexGrow={1} mr={2}>
-            Next.js <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-      </List>
+    <text>Randomize your next dirty</text>
+
+    <Select placeholder="Select district">
+      <option value="option1">ราชเทวี</option>
+      <option value="option2">บางขุนเทียน</option>
+      <option value="option3">วัฒนา</option>
+    </Select>
+
+    <div id='map'></div> 
+
+      <Button color="white" bg="#66462F" variant="solid">
+        Find Dirty
+      </Button>
+
+    <Map />
+
     </Main>
 
     <DarkModeSwitch />
     <Footer>
-      <Text>Next ❤️ Chakra</Text>
+      <Text>An undirty project by Son</Text>
     </Footer>
-    <CTA />
   </Container>
 )
+
+
+
 
 export default Index
