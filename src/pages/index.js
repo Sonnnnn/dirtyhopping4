@@ -13,6 +13,10 @@ import useCafe from '../hooks/use-cafe'
 
 const Index = () => {
   const { data } = useCafe()
+  console.log(data, 'data')
+
+  const districts = data?.map((cafe) => cafe.fields.District)
+  const uniqueDistricts = new Set(districts)
 
   return (
     <Container>
@@ -21,9 +25,9 @@ const Index = () => {
         <text>Randomize your next dirty</text>
 
         <Select placeholder="Select district">
-          <option value="option1">ราชเทวี</option>
-          <option value="option2">บางขุนเทียน</option>
-          <option value="option3">วัฒนา</option>
+          {[...uniqueDistricts].map((district) => {
+            return <option value={district}>{district}</option>
+          })}
         </Select>
 
         <div id="map"></div>
