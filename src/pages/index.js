@@ -9,33 +9,38 @@ import { Footer } from '../components/Footer'
 import { Button, Select } from '@chakra-ui/react'
 import Map from '../components/Map'
 import { getCafe } from '../components/map'
+import useCafe from '../hooks/use-cafe'
 
-const Index = () => (
-  <Container>
-    <Hero title="DirtyHopping" />
-    <Main>
-      <text>Randomize your next dirty</text>
+const Index = () => {
+  const { data } = useCafe()
 
-      <Select placeholder="Select district">
-        <option value="option1">ราชเทวี</option>
-        <option value="option2">บางขุนเทียน</option>
-        <option value="option3">วัฒนา</option>
-      </Select>
+  return (
+    <Container>
+      <Hero title="DirtyHopping" />
+      <Main>
+        <text>Randomize your next dirty</text>
 
-      <div id="map"></div>
+        <Select placeholder="Select district">
+          <option value="option1">ราชเทวี</option>
+          <option value="option2">บางขุนเทียน</option>
+          <option value="option3">วัฒนา</option>
+        </Select>
 
-      <Button color="white" bg="#66462F" variant="solid" onClick={getCafe}>
-        Find Dirty
-      </Button>
+        <div id="map"></div>
 
-      <Map />
-    </Main>
+        <Button color="white" bg="#66462F" variant="solid">
+          Find Dirty
+        </Button>
 
-    <DarkModeSwitch />
-    <Footer>
-      <Text>An undirty project by Son</Text>
-    </Footer>
-  </Container>
-)
+        <Map />
+      </Main>
+
+      <DarkModeSwitch />
+      <Footer>
+        <Text>An undirty project by Son</Text>
+      </Footer>
+    </Container>
+  )
+}
 
 export default Index

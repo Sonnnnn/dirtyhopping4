@@ -1,6 +1,10 @@
 import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 import theme from '../theme'
+
+// Create a client
+const queryClient = new QueryClient()
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -10,7 +14,9 @@ function MyApp({ Component, pageProps }) {
           useSystemColorMode: true,
         }}
       >
-        <Component {...pageProps} />
+        <QueryClientProvider client={queryClient}>
+          <Component {...pageProps} />
+        </QueryClientProvider>
       </ColorModeProvider>
     </ChakraProvider>
   )
