@@ -9,6 +9,11 @@ const getCafeAsync = async () => {
   return response.data
 }
 
+export const getCafe = async () => {
+  const data = await getCafeAsync()
+  setPlaceId(data[0].fields['Place ID'])
+}
+
 const Map = () => {
   const [placeId, setPlaceId] = useState(null)
   const [placeDetails, setPlaceDetails] = useState(null)
@@ -17,6 +22,7 @@ const Map = () => {
   // This function will run once after Map component render
   useEffect(() => {
     // TODO: update to get cafe on click find dirty instead
+
     getCafe()
   }, [])
 
@@ -27,11 +33,6 @@ const Map = () => {
       getPlaceDetails(placeId)
     }
   }, [placeId]) // <= dependency to watch
-
-  const getCafe = async () => {
-    const data = await getCafeAsync()
-    setPlaceId(data[0].fields['Place ID'])
-  }
 
   const getPlaceDetails = (placeId) => {
     const request = {
@@ -52,8 +53,6 @@ const Map = () => {
   }
 
   return (
-
-
     // Important! Always set the container height explicitly
     <div style={{ height: '300px', width: '100%' }}>
       <GoogleMapReact
